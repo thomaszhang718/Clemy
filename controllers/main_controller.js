@@ -6,8 +6,8 @@ var path = require('path');
 var moment = require('moment');*/
 
 
-var passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 // And we bring in our schema models
 var Reservation = require('../models/Reservation.js');
@@ -22,14 +22,28 @@ module.exports = function(app){
 	  res.render('index');
 	});
 
+	// Simple index route
+	app.get('/home', function(req, res) {
+	  //render home.handlebars
+	  res.render('home');
+	});
 
-	// login a user
+
+/*	// login a user
 	app.post('/login', function(req, res){
 
 		console.log("got to login")
 
 
-	});
+	});*/
+
+	app.post('/login',
+	    passport.authenticate('local-signup', {
+	        successRedirect: '/home',
+	        failureRedirect: '/',
+	        failureFlash: true
+	    })
+	);
 
 
 

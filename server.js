@@ -4,9 +4,22 @@ var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var passport = require('passport');
+
+//NOT SURE IF I NEED THESE, COPY PASTED FROM TUTORIAL
+//https://scotch.io/tutorials/easy-node-authentication-setup-and-local
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+
+
+
+
+
 
 // use morgan and bodyparser with our app
 app.use(logger('dev'));
+app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -20,6 +33,11 @@ app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
+
+app.use(session({ secret: 'ilovecoding' })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 // Database configuration with mongoose
@@ -40,7 +58,7 @@ db.once('open', function() {
 
 
 require('./controllers/main_controller.js')(app);
-
+require('./config/passport')(passport); // pass passport for configuration
 
 // set up port for heroku
 var PORT = process.env.PORT || 3000;
