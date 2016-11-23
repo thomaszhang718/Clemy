@@ -969,8 +969,8 @@ footer {
 }
 
 .social-bottom {
-  margin-top: 40px;
-  padding-bottom: 40px;
+  margin-top: 10px;
+  padding-bottom: 15px;
 }
 
 .social-bottom span {
@@ -980,7 +980,7 @@ footer {
   color: #333;
   text-transform: uppercase;
   float: left;
-  margin-right: 26px;
+  margin-right: 10px;
 }
 
 .social-bottom ul {
@@ -1153,7 +1153,7 @@ footer {
 
 .bottom-footer {
   text-align: left;
-  padding: 60px 0 15px 0;
+  padding: 15px 0 15px 0;
 }
 
 /*-- End Footer --*/

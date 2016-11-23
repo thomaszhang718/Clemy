@@ -5,19 +5,29 @@ var Schema = mongoose.Schema;
 
 // Create SoloOrder schema
 var SoloOrderSchema = new Schema({
-  // title is required
-  title: {
+  // creating required fields
+  orderDate: {
+    type:Date,
+    required:true
+  },
+  orderPickupTime: {
     type:String,
     required:true
   },
-  // date is required
-  date: {
-    type:String,
-    required:true
-  },
-  // url is required
-  url: {
+  orderName: {
       type:String,
+      required:true
+  },
+  orderAddress: {
+      type:String,
+      required:true
+  },
+  agreedToTerms: {
+      type:Boolean,
+      required:true
+  },
+  orderItems: {
+      type:Array,
       required:true
   }
 });

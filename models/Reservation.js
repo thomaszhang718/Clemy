@@ -5,19 +5,29 @@ var Schema = mongoose.Schema;
 
 // Create Reservation schema
 var ReservationSchema = new Schema({
-  // title is required
-  title: {
+  // creating required fields
+  reservationDate: {
+    type:Date,
+    required:true
+  },
+  reservationTime: {
     type:String,
     required:true
   },
-  // date is required
-  date: {
-    type:String,
-    required:true
-  },
-  // url is required
-  url: {
+  reservationName: {
       type:String,
+      required:true
+  },
+  partySize: {
+      type:Number,
+      required:true
+  },
+  agreedToTerms: {
+      type:Boolean,
+      required:true
+  },
+  orderItems: {
+      type:Array,
       required:true
   }
 });

@@ -5,19 +5,33 @@ var Schema = mongoose.Schema;
 
 // Create User schema
 var UserSchema = new Schema({
-  // title is required
-  title: {
+  // creating required fields
+  username: {
     type:String,
     required:true
   },
-  // date is required
-  date: {
+  email: {
     type:String,
     required:true
   },
-  // url is required
-  url: {
+  firstName: {
+    type:String,
+    required:true
+  },
+  lastName: {
       type:String,
+      required:true
+  },
+  password: {
+      type:String,
+      required:true    
+  },
+  accountType: {
+      type:String,
+      required:true
+  },
+  createDate: {
+      type:Date,
       required:true
   }
 });

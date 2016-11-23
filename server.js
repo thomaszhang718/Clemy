@@ -4,7 +4,6 @@ var app = express();
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var passport = require('passport');
 
 // use morgan and bodyparser with our app
 app.use(logger('dev'));
@@ -40,23 +39,7 @@ db.once('open', function() {
 });
 
 
-// And we bring in our Article model
-var Reservation = require('./models/Reservation.js');
-var SoloOrder = require('./models/SoloOrder.js');
-var User = require('./models/User.js');
-
-// Routes
-// ======
-
-// Simple index route
-app.get('/', function(req, res) {
-  //render home.handlebars
-  res.render('home');
-});
-
-
-
-
+require('./controllers/main_controller.js')(app);
 
 
 // set up port for heroku
