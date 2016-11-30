@@ -26,16 +26,39 @@
                     <div class="modal-dialog">
                         <div class="loginmodal-container">
                             <h1>Login to Your Account</h1><br>
-                            <form id="loginForm">
-                                <input type="text" name="username" id="username" class="login-form" placeholder="Username" maxlength="20" autocomplete="off" required>
-                                <input type="password" name="password" id="password" class="login-form" placeholder="Password" maxlength="20" autocomplete="off" required>
+<!--                             <form id="userLoginForm">
+                                <input type="text" name="email" id="email" class="login-form form-control" placeholder="Email" maxlength="20" autocomplete="off" required>
+                                <input type="password" name="password" id="password" class="login-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
                                 <input type="submit" name="login" class="login loginmodal-submit" value="Login" id="log-in">
 
+                            </form> -->
+
+
+                            <!-- LOGIN FORM -->
+                            <form action="/userLogin" method="post">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+
+                                <button type="submit" class="btn btn-warning btn-lg">Login</button>
                             </form>
 
+
+
                             <div class="login-help">
-                                Don't have an account? <a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign up here!</a>
+                                Don't have an account? <a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign up here!</a><br>
+                                Restaurant Login <a href="#" data-toggle="modal" data-target="#rest-login-modal" data-dismiss="modal">here!</a>
+
                             </div>
+
+
+
+
                         </div>
                     </div>
                 </div>
@@ -45,28 +68,96 @@
                     <div class="modal-dialog">
                         <div class="signupmodal-container">
                             <h1>Signup for an Account</h1><br>
-                            <form id="createAccountForm">
 
-                                <input type="text" name="firstName" id="firstName" class="signup-form" placeholder="First Name" maxlength="20" autocomplete="off" required>
-                                <input type="text" name="lastName" id="lastName" class="signup-form" placeholder="Last Name" maxlength="20" autocomplete="off" required>
-                                <input type="text" name="newUsername" id="newUsername" class="signup-form" placeholder="Username" maxlength="20" autocomplete="off" required>
-                                <input type="password" name="newPassword" id="newPassword" class="signup-form" placeholder="Password" maxlength="20" autocomplete="off" required>
-                                <input type="password" name="passwordAgain" id="passwordAgain" class="signup-form" placeholder="Confirm Password" maxlength="20" autocomplete="off" required>
-                                <input type="email" name="newEmail" id="newEmail" class="signup-form" placeholder="Email" maxlength="40" autocomplete="off" required>
+                            <p id="passwordMatch"></p>
 
+<!--                             <form id="createAccountForm">
+
+                                <input type="email" name="newEmail" id="newEmail" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
+                                <input type="password" name="newPassword" id="newPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
+                                <input type="password" name="passwordAgain" id="passwordAgain" class="signup-form form-control" placeholder="Confirm Password" maxlength="20" autocomplete="off" required>
 
 
 
                                 <input type="submit" name="signup" class="signup signupmodal-submit" value="signup" id="signup-btn">
 
+                            </form> -->
+
+
+                            <!-- SIGNUP FORM -->
+                            <form action="/createUser" method="post">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+
+                                <button type="submit" class="btn btn-warning btn-lg">Signup</button>
                             </form>
 
+
+
+
+
+
+
                             <div class="signup-help">
-                                Already Have an Account? <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login here!</a>
+                                Already Have an Account? <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login here!</a><br>
+                                Restaurant Login <a href="#" data-toggle="modal" data-target="#rest-login-modal" data-dismiss="modal">here!</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
+                <div class="modal fade" id="rest-login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="loginmodal-container">
+                            <h1>Restaurant Login</h1><br>
+<!--                             <form id="restLoginForm">
+
+                                <input type="email" name="restEmail" id="restEmail" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
+                                <input type="password" name="restPassword" id="restPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
+
+                                <input type="submit" name="restLogin" class="login loginmodal-submit" value="Login" id="rest-login">
+                            </form> -->
+
+
+                            <!-- LOGIN FORM -->
+                            <form action="/restLogin" method="post">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="password">
+                                </div>
+
+                                <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                            </form>
+
+
+
+
+
+                            <div class="login-help">
+                                User and not a Restaurant? <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login here!</a><br>
+                                Don't have an account? <a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign up here!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
 
 
 
@@ -320,17 +411,34 @@
 
 <script>
 
-    $("#loginForm").submit(function(e) {
+    $("#userLoginForm").submit(function(e) {
         e.preventDefault();
 
-        var username = $('#username').val().trim();
+        var email = $('#email').val().trim();
         var password = $('#password').val().trim();
 
-        loginFunc(username, password);
+        userLoginFunc(email, password);
 
         return false;
 
     })
+
+    $("#restLoginForm").submit(function(e) {
+        e.preventDefault();
+
+        var email = $('#restEmail').val().trim();
+        var password = $('#restPassword').val().trim();
+
+        restLoginFunc(email, password);
+
+        return false;
+
+    })
+
+
+
+
+
 
     $("#createAccountForm").submit(function(e) {
         e.preventDefault();
@@ -338,12 +446,21 @@
         var isMatch = bothPasswordsMatch();
 
         if (!isMatch) {
-            $('#passwordMatchModal').modal();
+            $('#passwordMatch').empty();
+            $('#passwordMatch').text("Your passwords do not match");
+
+
+
+
         } else {
             createAccount();
         }
         return false;
     })
+
+
+
+
 
     //------------------------------------- Contact Us Functions -------------------------------------//
 

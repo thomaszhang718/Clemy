@@ -1,16 +1,16 @@
 //------------------------------------- Login Function -------------------------------------//
-function loginFunc(username, password) {
+function userLoginFunc(email, password) {
 
-    console.log("login func");
+    console.log("user login func");
 
     // grab data from form
     var data = {
-            username: username,
+            email: email,
             password: password
         }
         console.log(data)
         // grab url to ajax call
-    var currentURL = window.location.origin + "/login";
+    var currentURL = window.location.origin + "/userLogin";
 
     // post our login data
     $.post(currentURL, data, function(results) {
@@ -28,6 +28,49 @@ function loginFunc(username, password) {
 
     });
 };
+
+
+
+function restLoginFunc(email, password) {
+
+    console.log("rest login func");
+
+    // grab data from form
+    var data = {
+            email: email,
+            password: password
+        }
+        console.log(data)
+        // grab url to ajax call
+    var currentURL = window.location.origin + "/restLogin";
+
+    // post our login data
+    $.post(currentURL, data, function(results) {
+        console.log("THIS IS THE RESULTS: " + results);
+
+/*        if (results === "fail") {
+            $('#invalidUserOrPassModal').modal();
+        } else if (results.type === "admin") {
+            console.log("You are an admin");
+            window.location.replace(window.location.origin + results.path);
+        } else if (results.type === "user") {
+            console.log("you're user!");
+            window.location.replace(window.location.origin + results.path);
+        }*/
+
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
 
 //------------------------------------- Create Account Functions -------------------------------------//
 

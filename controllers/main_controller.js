@@ -1,10 +1,5 @@
 var express = require('express');
 var router = express.Router();
-/*var Cookies = require('cookies');
-var jwt = require('jsonwebtoken'); 
-var path = require('path');
-var moment = require('moment');*/
-
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -12,81 +7,111 @@ var LocalStrategy = require('passport-local').Strategy;
 // And we bring in our schema models
 var Reservation = require('../models/Reservation.js');
 var SoloOrder = require('../models/SoloOrder.js');
-var User = require('../models/User.js');
 
 module.exports = function(app){
 
 	// Simple index route
 	app.get('/', function(req, res) {
-	  //render home.handlebars
-	  res.render('index');
+	    //render index.handlebars
+	    res.render('index');
 	});
 
-	// Simple index route
-	app.get('/home', function(req, res) {
-	  //render home.handlebars
-	  res.render('home');
-	});
+    // 
+    app.post('/userLogin', function(req, res, next) {
 
+        passport.authenticate('local-login', function(err, user, info) {
 
-/*	// login a user
-	app.post('/login', function(req, res){
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                console.log("NOT USER")
+                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+            }
+            req.logIn(user, function(err) {
+                if (err) {
+                    return next(err);
+                }
 
-		console.log("got to login")
+                if (user.local.group === "user") {
+                    console.log("IS USER");
+                    return res.redirect('/home');
 
+                }
 
-	});*/
+                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+            });
+        })(req, res, next);
+    });
 
-	app.post('/login',
-	    passport.authenticate('local-signup', {
-	        successRedirect: '/home',
-	        failureRedirect: '/',
-	        failureFlash: true
-	    })
-	);
+    app.post('/restLogin', function(req, res, next) {
 
+        passport.authenticate('local-login', function(err, user, info) {
 
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                console.log("NOT USER")
+                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+            }
+            req.logIn(user, function(err) {
+                if (err) {
+                    return next(err);
+                }
 
+                if (user.local.group === "restaurant") {
+                    console.log("IS RESTAURANT");
+                    return res.redirect('/restHome');
 
+                }
 
+                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+            });
+        })(req, res, next);
+    });
 
+    app.post('/createUser', passport.authenticate('local-signup', {
+        successRedirect : '/home', // redirect to the secure profile section
+        failureRedirect : '/fail', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 
+    // =====================================
+    // HOME SECTION =====================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    app.get('/home', isLoggedIn, function(req, res) {
 
-	// create a new user
-	app.post('/createUser', function(req, res){
+        res.render('home', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
 
-		console.log("got to create user")
+    app.get('/restHome', isLoggedIn, function(req, res) {
 
-		// create a new user and pass the req.body to the entry.
-		var newUser = new User(req.body);
+        res.render('restHome', {
+            user : req.user // get the user out of session and pass to template
+        });
+    });
 
-		console.log(req.body)
+    // =====================================
+    // LOGOUT ==============================
+    // =====================================
+    app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+};
 
-		// and save the new note the db
-		newUser.save(function(err, doc){
-			// log any errors
-			if(err){
-				console.log(err);
-			}
-			// otherwise
-			else {
-				//send doc, which is the data of the new note
-				res.send(doc);
-			}
-		});
-	});
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
 
-/*
-	app.post('/login', passport.authenticate('local'), function(req, res) {
-        // If this function gets called, authentication was successful.
-        // `req.user` contains the authenticated user.
-        res.render('home');
-	});*/
+    // if user is authenticated in the session, carry on 
+    if (req.isAuthenticated())
+        return next();
 
-
-
-
-
-
-
+    // if they aren't redirect them to the home page
+    res.redirect('/');
 }
