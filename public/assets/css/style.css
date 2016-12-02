@@ -220,3 +220,17 @@ body {
     font-size: 16px;
     color: #000;
 }
+
+#signup-btn {
+    width: 100%;
+}
+
+button[disabled] {
+  cursor: default;
+  background-color: grey;
+}
+
+button[disabled]:hover {
+  cursor: default;
+  background-color: grey;
+}

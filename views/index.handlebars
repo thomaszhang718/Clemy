@@ -54,29 +54,19 @@
 
                             <div id="signupPopup" class="modal-error-messages"></div>
 
+                            <form id="createAccountForm" action="/createUser" method="post">
 
-<!--                             <form id="createAccountForm">
-                                <input type="email" name="email" id="email" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
+                                <input type="email" name="email" id="newEmail" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
                                 <input type="password" name="password" id="newPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
                                 <input type="password" name="passwordAgain" id="passwordAgain" class="signup-form form-control" placeholder="Confirm Password" maxlength="20" autocomplete="off" required>
 
-                                <input type="submit" name="signup" class="signup signupmodal-submit" value="signup" id="signup-btn">
-                            </form> -->
 
 
-<!--                             <form id="createAccountForm">
+                                <button type="submit" class="signup signupmodal-submit" id="signup-btn">Signup</button>
 
-                                <input type="email" name="newEmail" id="newEmail" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
-                                <input type="password" name="newPassword" id="newPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
-                                <input type="password" name="passwordAgain" id="passwordAgain" class="signup-form form-control" placeholder="Confirm Password" maxlength="20" autocomplete="off" required>
+                            </form>
 
-
-
-                                <input type="submit" name="signup" class="signup signupmodal-submit" value="signup" id="signup-btn">
-
-                            </form> -->
-
-                            <form id="createAccountForm" action="/signup" method="post">
+<!--                             <form id="createAccountForm" action="/createUser" method="post">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="text" class="form-control" name="email">
@@ -90,8 +80,7 @@
                                     <input type="password" class="form-control" name="passwordAgain" id="passwordAgain">
                                 </div>
                                 <button type="submit" class="btn btn-warning btn-lg" id="signup-submit">Signup</button>
-                            </form>
-
+                            </form> -->
 
 
 
@@ -416,63 +405,66 @@
     });
 
     $(function(){
-        document.getElementById("signup-submit").disabled = true;
+        document.getElementById("signup-btn").disabled = true;
 
         $("#passwordAgain").on("input", function() {
             if ($("#newPassword").val() === $("#passwordAgain").val()) {
                 $('#signupPopup').empty();
-                document.getElementById("signup-submit").disabled = false;
+                document.getElementById("signup-btn").disabled = false;
+
+
+
+                $(function(){
+                    $('#createAccountForm').on('submit', function(e) {
+                        e.preventDefault();
+                        //var data =  $(this).serialize();
+
+                        //console.log(data)
+
+                        var data = {
+                            email: $("#newEmail").val().trim(),
+                            password: $("#newPassword").val().trim()
+                        }
+                        console.log(data)
+
+                        $.post('/createUser', function(result) {
+/*                            if(result.valid == true) {
+                                window.location.href = '/home';
+                            }
+                            else {
+                                $('#signupPopup').empty();
+                                $('#signupPopup').html(result);
+                            }*/
+                        });
+
+                        //DO A CHECK
+
+
+
+                    });
+                });
+
+
+
+
+
+
+
+
             }
             else {
-                document.getElementById("signup-submit").disabled = true;
-                console.log($("#newPassword").val())
-                console.log($("#passwordAgain").val())
-
+                document.getElementById("signup-btn").disabled = true;
                 $('#signupPopup').empty();
-                $('#signupPopup').text("Your passwords do not match");           
+                $('#signupPopup').text("Your passwords do not match");    
+
+                $('#signup-btn').css("background-color")
+
             }
         });
 
     });
 
 
-
-
-
-/*    // Submit/Signup function for Create User Form
-    $("#createAccountForm").submit(function(e) {
-        e.preventDefault();
-        var data =  $(this).serialize();
-        var isMatch = bothPasswordsMatch();
-
-        if (!isMatch) {
-            $('#signupPopup').empty();
-            $('#signupPopup').text("Your passwords do not match");
-        } else {
-
-            $.get('/createUser', data, function(result) {
-
-                console.log("here")
-                console.log(result)
-
-                if(result.valid == true) {
-                    window.location.href = '/home';
-                }
-                else {
-                    $('#restPopup').empty();
-                    $('#restPopup').html(result);
-                }
-            });
-
-
-
-
-
-
-
-        }
-        return false;
-    })*/
 
 
 

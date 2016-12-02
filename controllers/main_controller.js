@@ -69,7 +69,13 @@ module.exports = function(app){
 
 
 
-/*    app.post('/createUser', function(req, res, next) {
+    app.post('/createUser', function(req, res, next) {
+
+        console.log("here")
+
+        console.log(req)
+
+
 
         passport.authenticate('local-signup', function(err, user, info) {
 
@@ -95,19 +101,16 @@ module.exports = function(app){
                 return res.send(info);
             });
         })(req, res, next);
-    });*/
+    });
 
 
 
-
+/*
     app.post('/createUser', passport.authenticate('local-signup', {
         successRedirect : '/home', // redirect to the secure profile section
-        failureRedirect : '/fail' // redirect back to the signup page if there is an error
-    }));
-
-
-
-
+        failureRedirect : '/fail', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));*/
 
 
 
