@@ -21,55 +21,48 @@
                 </div>
 
 
+<!-- ////////////////////////////////////////////// LOGIN MODAL ////////////////////////////////////////////// -->
 
                 <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                         <div class="loginmodal-container">
-                            <h1>Login to Your Account</h1><br>
-<!--                             <form id="userLoginForm">
-                                <input type="text" name="email" id="email" class="login-form form-control" placeholder="Email" maxlength="20" autocomplete="off" required>
+                            <h1>Login to Your Account</h1>
+
+                            <div id="loginPopup" class="modal-error-messages"></div>
+
+                            <form id="userLoginForm">
+                                <input type="email" name="email" id="email" class="login-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
                                 <input type="password" name="password" id="password" class="login-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
                                 <input type="submit" name="login" class="login loginmodal-submit" value="Login" id="log-in">
-
-                            </form> -->
-
-
-                            <!-- LOGIN FORM -->
-                            <form action="/userLogin" method="post">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-
-                                <button type="submit" class="btn btn-warning btn-lg">Login</button>
                             </form>
-
-
 
                             <div class="login-help">
                                 Don't have an account? <a href="#" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">Sign up here!</a><br>
                                 Restaurant Login <a href="#" data-toggle="modal" data-target="#rest-login-modal" data-dismiss="modal">here!</a>
-
                             </div>
-
-
-
 
                         </div>
                     </div>
                 </div>
 
+<!-- ////////////////////////////////////////////// SIGNUP MODAL ////////////////////////////////////////////// -->
 
                 <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                         <div class="signupmodal-container">
-                            <h1>Signup for an Account</h1><br>
+                            <h1>Signup for an Account</h1>
 
-                            <p id="passwordMatch"></p>
+                            <div id="signupPopup" class="modal-error-messages"></div>
+
+
+<!--                             <form id="createAccountForm">
+                                <input type="email" name="email" id="email" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
+                                <input type="password" name="password" id="newPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
+                                <input type="password" name="passwordAgain" id="passwordAgain" class="signup-form form-control" placeholder="Confirm Password" maxlength="20" autocomplete="off" required>
+
+                                <input type="submit" name="signup" class="signup signupmodal-submit" value="signup" id="signup-btn">
+                            </form> -->
+
 
 <!--                             <form id="createAccountForm">
 
@@ -83,19 +76,20 @@
 
                             </form> -->
 
-
-                            <!-- SIGNUP FORM -->
-                            <form action="/createUser" method="post">
+                            <form id="createAccountForm" action="/signup" method="post">
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="text" class="form-control" name="email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" name="password">
+                                    <input type="password" class="form-control" name="password" id="newPassword">
                                 </div>
-
-                                <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="passwordAgain" id="passwordAgain">
+                                </div>
+                                <button type="submit" class="btn btn-warning btn-lg" id="signup-submit">Signup</button>
                             </form>
 
 
@@ -112,39 +106,20 @@
                     </div>
                 </div>
 
-
-
+<!-- ////////////////////////////////////////////// RESTAURANT LOGIN MODAL ////////////////////////////////////////////// -->
 
                 <div class="modal fade" id="rest-login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                         <div class="loginmodal-container">
-                            <h1>Restaurant Login</h1><br>
-<!--                             <form id="restLoginForm">
+                            <h1>Restaurant Login</h1>
 
-                                <input type="email" name="restEmail" id="restEmail" class="signup-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
-                                <input type="password" name="restPassword" id="restPassword" class="signup-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
+                            <div id="restPopup" class="modal-error-messages"></div>
 
-                                <input type="submit" name="restLogin" class="login loginmodal-submit" value="Login" id="rest-login">
-                            </form> -->
-
-
-                            <!-- LOGIN FORM -->
-                            <form action="/restLogin" method="post">
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="text" class="form-control" name="email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input type="password" class="form-control" name="password">
-                                </div>
-
-                                <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                            <form id="userLoginForm">
+                                <input type="email" name="email" id="email" class="login-form form-control" placeholder="Email" maxlength="40" autocomplete="off" required>
+                                <input type="password" name="password" id="password" class="login-form form-control" placeholder="Password" maxlength="20" autocomplete="off" required>
+                                <input type="submit" name="login" class="login loginmodal-submit" value="Login" id="log-in">
                             </form>
-
-
-
-
 
                             <div class="login-help">
                                 User and not a Restaurant? <a href="#" data-toggle="modal" data-target="#login-modal" data-dismiss="modal">Login here!</a><br>
@@ -153,19 +128,12 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
+
+<!-- ////////////////////////////////////////////// LOGO AREA ////////////////////////////////////////////// -->
+
     <div id="main-header">
         <div class="container">
             <div class="row">
@@ -179,6 +147,7 @@
     </div>
 </header>
 
+<!-- ////////////////////////////////////////////// SLIDER ////////////////////////////////////////////// -->
 
 <div id="slider">
     <div class="flexslider">
@@ -214,6 +183,7 @@
     </div>
 </div>
 
+<!-- ////////////////////////////////////////////// SERVICES SECTION ////////////////////////////////////////////// -->
 
 <div id="services">
     <div class="container">
@@ -266,9 +236,7 @@
     </div>
 </div>
 
-
-
-
+<!-- ////////////////////////////////////////////// ABOUT US SECTION ////////////////////////////////////////////// -->
 
 <div id="aboutUs">
     <div class="container">
@@ -301,6 +269,7 @@
     </div>
 </div>
 
+<!-- ////////////////////////////////////////////// TESTIMONIALS SECTION ////////////////////////////////////////////// -->
 
 <div id="testimonails">
     <div class="container">
@@ -354,7 +323,7 @@
     </div>
 </div>
 
-
+<!-- ////////////////////////////////////////////// CONTACT US SECTION ////////////////////////////////////////////// -->
 
 <div id="contact">
     <div class="container">
@@ -377,7 +346,7 @@
 </div>
 
 
-
+<!-- ////////////////////////////////////////////// FOOTER SECTION ////////////////////////////////////////////// -->
 
 
 <footer>
@@ -408,55 +377,102 @@
     </div>
 </footer>
 
+<!-- ////////////////////////////////////////////// JAVASCRIPT ////////////////////////////////////////////// -->
 
 <script>
 
-    $("#userLoginForm").submit(function(e) {
-        e.preventDefault();
+    // Submit/Login function for User Login Form
+    $(function(){
+        $('#userLoginForm').on('submit', function(e) {
+            e.preventDefault();
+            var data =  $(this).serialize();
+            $.get('/userLogin', data, function(result) {
+                if(result.valid == true) {
+                    window.location.href = '/home';
+                }
+                else {
+                    $('#loginPopup').empty();
+                    $('#loginPopup').html(result);
+                }
+            });
+        });
+    });
 
-        var email = $('#email').val().trim();
-        var password = $('#password').val().trim();
+    // Submit/Login function for Restaurant Login Form
+    $(function(){
+        $('#restLoginForm').on('submit', function(e) {
+            e.preventDefault();
+            var data =  $(this).serialize();
+            $.get('/restLogin', data, function(result) {
+                if(result.valid == true) {
+                    window.location.href = '/restHome';
+                }
+                else {
+                    $('#restPopup').empty();
+                    $('#restPopup').html(result);
+                }
+            });
+        });
+    });
 
-        userLoginFunc(email, password);
+    $(function(){
+        document.getElementById("signup-submit").disabled = true;
 
-        return false;
+        $("#passwordAgain").on("input", function() {
+            if ($("#newPassword").val() === $("#passwordAgain").val()) {
+                $('#signupPopup').empty();
+                document.getElementById("signup-submit").disabled = false;
+            }
+            else {
+                document.getElementById("signup-submit").disabled = true;
+                console.log($("#newPassword").val())
+                console.log($("#passwordAgain").val())
 
-    })
+                $('#signupPopup').empty();
+                $('#signupPopup').text("Your passwords do not match");           
+            }
+        });
 
-    $("#restLoginForm").submit(function(e) {
-        e.preventDefault();
-
-        var email = $('#restEmail').val().trim();
-        var password = $('#restPassword').val().trim();
-
-        restLoginFunc(email, password);
-
-        return false;
-
-    })
-
-
-
-
+    });
 
 
+
+
+
+/*    // Submit/Signup function for Create User Form
     $("#createAccountForm").submit(function(e) {
         e.preventDefault();
-
+        var data =  $(this).serialize();
         var isMatch = bothPasswordsMatch();
 
         if (!isMatch) {
-            $('#passwordMatch').empty();
-            $('#passwordMatch').text("Your passwords do not match");
-
-
-
-
+            $('#signupPopup').empty();
+            $('#signupPopup').text("Your passwords do not match");
         } else {
-            createAccount();
+
+            $.get('/createUser', data, function(result) {
+
+                console.log("here")
+                console.log(result)
+
+                if(result.valid == true) {
+                    window.location.href = '/home';
+                }
+                else {
+                    $('#restPopup').empty();
+                    $('#restPopup').html(result);
+                }
+            });
+
+
+
+
+
+
+
         }
         return false;
-    })
+    })*/
 
 
 

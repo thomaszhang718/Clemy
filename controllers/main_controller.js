@@ -17,7 +17,7 @@ module.exports = function(app){
 	});
 
     // 
-    app.post('/userLogin', function(req, res, next) {
+    app.get('/userLogin', function(req, res, next) {
 
         passport.authenticate('local-login', function(err, user, info) {
 
@@ -25,8 +25,7 @@ module.exports = function(app){
                 return next(err);
             }
             if (!user) {
-                console.log("NOT USER")
-                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+                return res.send(info);
             }
             req.logIn(user, function(err) {
                 if (err) {
@@ -35,16 +34,15 @@ module.exports = function(app){
 
                 if (user.local.group === "user") {
                     console.log("IS USER");
-                    return res.redirect('/home');
-
+                    return res.send({ valid: true });
                 }
 
-                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+                return res.send(info);
             });
         })(req, res, next);
     });
 
-    app.post('/restLogin', function(req, res, next) {
+    app.get('/restLogin', function(req, res, next) {
 
         passport.authenticate('local-login', function(err, user, info) {
 
@@ -52,8 +50,7 @@ module.exports = function(app){
                 return next(err);
             }
             if (!user) {
-                console.log("NOT USER")
-                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+                return res.send(info);
             }
             req.logIn(user, function(err) {
                 if (err) {
@@ -62,20 +59,62 @@ module.exports = function(app){
 
                 if (user.local.group === "restaurant") {
                     console.log("IS RESTAURANT");
-                    return res.redirect('/restHome');
-
+                    return res.send({ valid: true });
                 }
 
-                return res.redirect('/'); //FIX SO IT DOESN'T REFRESH BUT FLASH MESSAGES WHY
+                return res.send(info);
             });
         })(req, res, next);
     });
 
+
+
+/*    app.post('/createUser', function(req, res, next) {
+
+        passport.authenticate('local-signup', function(err, user, info) {
+
+            console.log("HERE")
+            console.log(user)
+
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.send(info);
+            }
+            req.logIn(user, function(err) {
+                if (err) {
+                    return next(err);
+                }
+
+                if (user.local.group === "restaurant") {
+                    console.log("IS RESTAURANT");
+                    return res.send({ valid: true });
+                }
+
+                return res.send(info);
+            });
+        })(req, res, next);
+    });*/
+
+
+
+
     app.post('/createUser', passport.authenticate('local-signup', {
         successRedirect : '/home', // redirect to the secure profile section
-        failureRedirect : '/fail', // redirect back to the signup page if there is an error
-        failureFlash : true // allow flash messages
+        failureRedirect : '/fail' // redirect back to the signup page if there is an error
     }));
+
+
+
+
+
+
+
+
+
+
+
 
     // =====================================
     // HOME SECTION =====================

@@ -114,6 +114,14 @@ body {
     color: #000;
 }
 
+.modal-error-messages {
+    font-family: 'Slabo 27px', serif;
+    font-size: 14px;
+    color: #ff0000;
+    margin: 10px 0;
+}
+
+
 /*----------------------------------------------------     Signup Modal ------------------------------------------------------*/
 
 /****** SIGNUP MODAL ******/
