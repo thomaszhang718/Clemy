@@ -64,7 +64,7 @@ p {
   color: #fff;
   position: fixed;
   width: 100%;
-  z-index: 10;
+  z-index: 2000;
   height: 3.3em;
 }
 
