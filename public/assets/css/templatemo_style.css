@@ -980,6 +980,9 @@ footer {
   background-color: #f3f3f3;
   border-top: 4px solid #f78e21;
   margin-top: 120px;
+  z-index: 50;
+  position: absolute;
+  width: 100%;
 }
 
 .social-bottom {

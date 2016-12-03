@@ -40,6 +40,8 @@ body {
 #followUs { 
     display:inline-block; 
     vertical-align:middle;
+    position: absolute;
+    left: -13%;
 }
 
 #copyrightSpan {

@@ -90,10 +90,11 @@ module.exports = function(app){
         })
     })
 
-
-
-
-
+    //Route for restaurant
+    app.get('/api/restaurants/:restName', isLoggedIn, function(req, res) {
+        var restaurantName = req.params.restName;
+        res.render("./restaurants/" + restaurantName);
+    })
 
     // =====================================
     // HOME SECTION =====================

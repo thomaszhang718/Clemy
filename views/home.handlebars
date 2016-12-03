@@ -1,26 +1,174 @@
-<div class="container">
+<link rel="stylesheet" href="../../assets/css/home-style.css">
 
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Home Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    </div>
+<header>
+    <div id="top-header">
+        <div class="container">
+            <div class="row">
 
-    <div class="row">
+                <div class="col-md-2 logo-div">
+                    <div class="logo">
+                        <a href="/"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
+                    </div>
+                </div>
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
+                <div class="col-md-5 login-div">
+                    <div class="cart-info">
 
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
+                        <a href="#">My Account</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+
+    <div id="main-header">
+        <div class="container">
+            <div class="row">
 
             </div>
         </div>
+    </div>
+</header>
+
+<!-- ////////////////////////////////////////////// FEATURED RESTAURANTS SECTION ////////////////////////////////////////////// -->
+
+<div id="featured-restaurants">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section">
+                    <h2>Featured Restaurants</h2>
+                    <img src="/assets/images/under-heading.png" alt="" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <a href="/api/restaurants/tijuana-flats"><img class="restaurant-logos" src="/assets/images/rest-logos/tijuana-flats.png" alt="tijuana flats logo" ></a>
+                    </div>
+                    <a href="/api/restaurants/tijuana-flats"><p>Tijuana Flats</p></a>
+                    <p> ADD ADDRESS FOR PARTICULAR RESTAURANT</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <a href="/api/restaurants/olive-garden"><img class="restaurant-logos" src="/assets/images/rest-logos/olive-garden.png" alt="olive garden logo" ></a>
+                    </div>
+                    <a href="/api/restaurants/olive-garden"><p>Olive Garden (Not Implemented Yet)</p></a>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x150" alt="placeholder logo" > 
+                    </div>
+                    <p>Restaurant 3</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x350" alt="placeholder logo" > 
+                    </div>
+                    <p>Restaurant 4</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x350" alt="placeholder logo" >
+                    </div>
+                    <p>Restaurant 5</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x350" alt="placeholder logo" > 
+                    </div>
+                    <p>Restaurant 6</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x350" alt="placeholder logo" > 
+                    </div>
+                    <p>Restaurant 7</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="restaurant-logo-div">
+                    <div class="img-logo-div">
+                        <img class="restaurant-logos" src="http://placehold.it/350x350" alt="placeholder logo" > 
+                    </div>
+                    <p>Restaurant 8</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
-
 </div>
+
+
+
+
+<!-- ////////////////////////////////////////////// FOOTER SECTION ////////////////////////////////////////////// -->
+
+
+<footer>
+    <div class="container">
+        <div class="bottom-footer">
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="social-bottom">
+                        <span id="followUs">Follow us:
+                        <ul id="socialMediaUl">
+                            <li><a href="#" class="fa fa-facebook"></a></li>
+                            <li><a href="#" class="fa fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-rss"></a></li>
+                        </ul>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <span id="copyrightSpan">Copyright © 2016 <a href="#">Lemcy</a></span>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- ////////////////////////////////////////////// JAVASCRIPT ////////////////////////////////////////////// -->
+
+<script>
+
+
+</script>

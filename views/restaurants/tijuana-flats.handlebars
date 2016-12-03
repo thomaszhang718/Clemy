@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="../../assets/css/restaurant styles/tijuana-flats.css">
+
+<header>
+    <div id="top-header">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-2 logo-div">
+                    <div class="logo">
+                        <a href="/"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 login-div">
+                    <div class="cart-info">
+
+                        <a href="#">My Account</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="/logout">Logout</a>
+                    </div>
+                </div>
+
+    <div id="main-header">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<div class="container" id="wrapperx">
+
+	<!-- ////////////////////////////////////////////// SIDEBAR SECTION ////////////////////////////////////////////// -->
+
+	<div id="sidebar-wrapper">
+	    <ul class="sidebar-nav">
+	        <li class="sidebar-brand"><a href="#reservation-section">Reservation</a></li>
+	        <li class="sidebar-brand"><a href="#about-section">About</a></li>
+	        <li class="sidebar-brand"><a href="#review-section">Reviews</a></li>
+
+	    </ul>
+	</div>
+
+	<!-- ////////////////////////////////////////////// PAGE CONTENT SECTION ////////////////////////////////////////////// -->
+
+	<div id="page-content-wrapper">
+
+
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="heading-section" id="reservation-section">
+	                <h2>Make A Reservation</h2>
+	                <img src="/assets/images/under-heading.png" alt="" />
+	            </div>
+	        </div>
+	    </div>
+
+
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="heading-section" id="about-section">
+	                <h2>About Tijuana Flats</h2>
+	                <img src="/assets/images/under-heading.png" alt="" />
+	            </div>
+	        </div>
+	    </div>
+
+
+
+	    <div class="row">
+	        <div class="col-md-12">
+	            <div class="heading-section" id="review-section">
+	                <h2>Yelp Reviews</h2>
+	                <img src="/assets/images/under-heading.png" alt="" />
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</div>
+
+
+<!-- ////////////////////////////////////////////// FOOTER SECTION ////////////////////////////////////////////// -->
+
+
+<footer>
+    <div class="container">
+        <div class="bottom-footer">
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="social-bottom">
+                        <span id="followUs">Follow us:
+                        <ul id="socialMediaUl">
+                            <li><a href="#" class="fa fa-facebook"></a></li>
+                            <li><a href="#" class="fa fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-rss"></a></li>
+                        </ul>
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <span id="copyrightSpan">Copyright © 2016 <a href="#">Lemcy</a></span>
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+<!-- ////////////////////////////////////////////// JAVASCRIPT ////////////////////////////////////////////// -->
+
+<script>
+    $(document).ready(function(){
+        $('a[href^="#"]').on('click',function (e) {
+            e.preventDefault();
+
+            var target = this.hash;
+            var $target = $(target);
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, 900, 'swing', function () {
+                window.location.hash = target;
+            });
+        });
+    });
+
+</script>
