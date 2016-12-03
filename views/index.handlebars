@@ -2,9 +2,16 @@
     <div id="top-header">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+
+                <div class="col-md-2 logo-div">
+                    <div class="logo">
+                        <a href="#"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
+                    </div>
+                </div>
+
+                <div class="col-md-5 nav-div">
                     <div class="home-account">
-                        <a href="#home">Home</a>
+                        <a href="#main-header">Home</a>
                         <a href="#services">Our Services</a>
                         <a href="#testimonails">Testimonials</a>
                         <a href="#aboutUs">About Us</a>
@@ -14,7 +21,7 @@
 
 
 
-                <div class="col-md-6">
+                <div class="col-md-5 login-div">
                     <div class="cart-info">
                         <a href="#" data-toggle="modal" data-target="#login-modal">Login / Signup</a>
                     </div>
@@ -126,11 +133,7 @@
     <div id="main-header">
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="logo">
-                        <a href="#"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -491,6 +494,19 @@
 
     })
 
+/*$(document).ready(function(){
+    $('a[href^="#"]').on('click',function (e) {
+        e.preventDefault();
 
+        var target = this.hash;
+        var $target = $(target);
+
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top
+        }, 900, 'swing', function () {
+            window.location.hash = target;
+        });
+    });
+});*/
 
 </script>

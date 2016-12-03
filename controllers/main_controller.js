@@ -70,51 +70,11 @@ module.exports = function(app){
         })(req, res, next);
     });
 
-
-
-/*    app.post('/createUser', function(req, res, next) {
-
-        console.log("here")
-
-        console.log(req)
-
-
-
-        passport.authenticate('local-signup', function(err, user, info) {
-
-            console.log("HERE")
-            console.log(user)
-
-            if (err) {
-                return next(err);
-            }
-            if (!user) {
-                return res.send(info);
-            }
-            req.logIn(user, function(err) {
-                if (err) {
-                    return next(err);
-                }
-
-                if (user.local.group === "restaurant") {
-                    console.log("IS RESTAURANT");
-                    return res.send({ valid: true });
-                }
-
-                return res.send(info);
-            });
-        })(req, res, next);
-    });*/
-
-
-
-
     app.post('/createUser', passport.authenticate('local-signup', {
         successRedirect : '/home', // redirect to the secure profile section
         failureRedirect : '/fail', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
-
 
     app.post('/checkEmail', function(req, res) {
 

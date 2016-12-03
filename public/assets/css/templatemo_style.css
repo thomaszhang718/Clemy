@@ -62,25 +62,36 @@ p {
 #top-header {
   background-color: #333;
   color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  height: 3.3em;
 }
 
 .home-account a {
   display: inline-block;
   margin-right: 15px;
-  padding: 10px 0;
-  font-size: 13px;
+  padding: 15px 0;
+  font-size: 14px;
   font-family: 'Open Sans', sans-serif;
 }
 
 .cart-info {
   text-align: right;
-  padding: 8px 0;
-  font-size: 13px;
+  padding: 15px 0;
+  font-size: 14px;
   font-family: 'Open Sans', sans-serif;
 }
 
+.logo img {
+  /*padding: 20px 0;*/
+  height: 3.3em;
+}
+
 .logo {
-  padding: 20px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .main-menu ul {
@@ -1300,8 +1311,10 @@ footer {
     text-align: center;
   }
 
-  .logo {
-    padding-bottom: 60px;
+  .logo img {
+    /*padding-bottom: 60px;*/
+    margin-top: 5px;
+    height: 40px;
   }
 
   .main-menu li {
