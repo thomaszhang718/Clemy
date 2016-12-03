@@ -7,6 +7,9 @@ var LocalStrategy = require('passport-local').Strategy;
 // And we bring in our schema models
 var Reservation = require('../models/Reservation.js');
 var SoloOrder = require('../models/SoloOrder.js');
+var User = require('../models/User.js');
+
+
 
 module.exports = function(app){
 
@@ -69,7 +72,7 @@ module.exports = function(app){
 
 
 
-    app.post('/createUser', function(req, res, next) {
+/*    app.post('/createUser', function(req, res, next) {
 
         console.log("here")
 
@@ -101,18 +104,31 @@ module.exports = function(app){
                 return res.send(info);
             });
         })(req, res, next);
-    });
+    });*/
 
 
 
-/*
+
     app.post('/createUser', passport.authenticate('local-signup', {
         successRedirect : '/home', // redirect to the secure profile section
         failureRedirect : '/fail', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
-    }));*/
+    }));
 
 
+    app.post('/checkEmail', function(req, res) {
+
+        User.findOne({ 'local.email' :  req.body.email }, function(err, user) {
+            if (user == null) {
+                //send true if email is available
+                res.send(true)
+            }
+            else {
+                //send false if email already exists in database
+                res.send(false)
+            }
+        })
+    })
 
 
 

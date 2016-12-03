@@ -321,18 +321,32 @@
                 <div class="heading-section">
                     <h2>Contact Us</h2>
                     <img src="/assets/images/under-heading.png" alt="" />
+                    <h3>We are here to answer any questions you may have about your Lemcy experience. Reach out to us and we'll respond as soon as we can.<br>
+                    Even if there is something you have always wanted to experience and can't find it on our app, let us know and we promise to look into it!</h3>
                 </div>
             </div>
         </div>
-        <div class="row">
-
-            <p>CONTACT FORM HERE</p>
-
+<!--         <div class="row">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                Your message has been sent. Thank you!
+            </div>
+        </div> -->
+<!--        <form method="post" action="" id="contactform">
+          <input name="name" id="contactName" type="text" class="contact col-md-6" placeholder="Your Name *" >
+          <input name="email" id="contactEmail" type="email" class="contact noMarr col-md-6" placeholder="E-mail address *" >
+          <textarea name="comment" id="contactMessage" class="contact col-md-12" placeholder="Message *"></textarea>
+          <input type="submit" id="contactSubmit" class="contact submit" value="Send message">
+        </form> -->
 
 
         </div>
     </div>
 </div>
+
+
+
+
 
 
 <!-- ////////////////////////////////////////////// FOOTER SECTION ////////////////////////////////////////////// -->
@@ -404,71 +418,64 @@
         });
     });
 
+
     $(function(){
+        //Signup button disabled at start
         document.getElementById("signup-btn").disabled = true;
 
-        $("#passwordAgain").on("input", function() {
-            if ($("#newPassword").val() === $("#passwordAgain").val()) {
-                $('#signupPopup').empty();
-                document.getElementById("signup-btn").disabled = false;
+        //Set up 2 boolean checks to see if the email is already in the database and if the passwords match
+        var isAvailableEmail = false;
+        var isMatch = false;
 
-
-
-                $(function(){
-                    $('#createAccountForm').on('submit', function(e) {
-                        e.preventDefault();
-                        //var data =  $(this).serialize();
-
-                        //console.log(data)
-
-                        var data = {
-                            email: $("#newEmail").val().trim(),
-                            password: $("#newPassword").val().trim()
-                        }
-                        console.log(data)
-
-                        $.post('/createUser', function(result) {
-/*                            if(result.valid == true) {
-                                window.location.href = '/home';
-                            }
-                            else {
-                                $('#signupPopup').empty();
-                                $('#signupPopup').html(result);
-                            }*/
-                        });
-
-                        //DO A CHECK
-
-
-
-                    });
-                });
-
-
-
-
-
-
-
-
+        $("#newEmail").change(function() {
+            //Grab email they entered on change
+            var data = {
+                email: $("#newEmail").val().trim()
             }
+            //Post to checkEmail route which searches db to see if it already exists and sends a true/false response
+            $.post('/checkEmail', data, function(result) {
+
+                if (result) {
+                    $('#signupPopup').empty();
+                    var isAvailableEmail = true; 
+                    if (isMatch) {
+                        //enable button if passwords match and email is available
+                        document.getElementById("signup-btn").disabled = false;
+                    }
+                }
+                else {
+                    //let user know email already exists and disable button if it was enabled
+                    document.getElementById("signup-btn").disabled = true;
+                    $('#signupPopup').empty();
+                    $('#signupPopup').text("This Email Exists Already");                      
+                }
+            })
+        })
+
+        $("#passwordAgain").on("input", function() {
+            //check if passwords enter match
+            if ($("#newPassword").val() === $("#passwordAgain").val()) {
+                $('#signupPopup').empty(); 
+                isMatch = true; //set true
+
+                if (isAvailableEmail) {
+                    //enable button if passwords match and email is available
+                    document.getElementById("signup-btn").disabled = false;
+                }
+                else {
+                    document.getElementById("signup-btn").disabled = true;
+                    $('#signupPopup').empty();
+                    $('#signupPopup').text("This Email Exists Already");                       
+                }
+            }
+            //if passwords don't match, disable button and tell user
             else {
                 document.getElementById("signup-btn").disabled = true;
                 $('#signupPopup').empty();
                 $('#signupPopup').text("Your passwords do not match");    
-
-                $('#signup-btn').css("background-color")
-
             }
         });
-
     });
-
-
-
-
-
-
 
     //------------------------------------- Contact Us Functions -------------------------------------//
 
