@@ -1,4 +1,10 @@
 <link rel="stylesheet" href="../../assets/css/restaurant styles/tijuana-flats.css">
+<link rel="stylesheet" href="../../assets/css/flatpickr.min.css">
+<script src="../../assets/js/flatpickr.min.js"></script>
+
+<link rel="stylesheet" href="../../assets/css/intlTelInput.css">
+<script src="../../assets/js/intlTelInput.js"></script>
+
 
 <header>
     <div id="top-header">
@@ -7,7 +13,7 @@
 
                 <div class="col-md-2 logo-div">
                     <div class="logo">
-                        <a href="/"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
+                        <a href="/home"><img src="/assets/images/logo.png" title="Lemcy Logo" alt="Lemcy Logo Image" /></a>
                     </div>
                 </div>
 
@@ -35,9 +41,9 @@
 
 	<div id="sidebar-wrapper">
 	    <ul class="sidebar-nav">
-	        <li class="sidebar-brand"><a href="#reservation-section">Reservation</a></li>
-	        <li class="sidebar-brand"><a href="#about-section">About</a></li>
-	        <li class="sidebar-brand"><a href="#review-section">Reviews</a></li>
+	        <li><a href="#reservation-section" class="sidebar-brand">Reservation</a></li>
+	        <li><a href="#about-section" class="sidebar-brand">About</a></li>
+	        <li><a href="#review-section" class="sidebar-brand">Reviews</a></li>
 
 	    </ul>
 	</div>
@@ -52,6 +58,95 @@
 	            <div class="heading-section" id="reservation-section">
 	                <h2>Make A Reservation</h2>
 	                <img src="/assets/images/under-heading.png" alt="" />
+
+                    <form id="makeReservationForm" >
+
+                    <input type="text" name="reservationName" id="reservationName" class="form-control" placeholder="Reservation Name" maxlength="80" autocomplete="off" required>
+                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" maxlength="40" autocomplete="off" required>
+
+
+
+
+
+
+
+                        <select name="party-size" id="party-size" tabindex="1" class="reservation-input" required>  
+                            <option value="" disabled selected hidden>Party Size</option>
+                            <option value="1">1 person</option>
+                            <option value="1">1 person</option>
+                            <option value="2">2 people</option>
+                            <option value="3">3 people</option>
+                            <option value="4">4 people</option>
+                            <option value="5">5 people</option>
+                            <option value="6">6 people</option>
+                            <option value="7">7 people</option>
+                            <option value="8">8 people</option>
+                            <option value="9">9 people</option>
+                            <option value="10">10 people</option>
+                            <option value="11">11 people</option>
+                            <option value="12">12 people</option>
+                            <option value="13">13 people</option>
+                            <option value="14">14 people</option>
+                            <option value="15">15 people</option>
+                            <option value="16">16 people</option>
+                            <option value="17">17 people</option>
+                            <option value="18">18 people</option>
+                            <option value="19">19 people</option>
+                            <option value="20">20 people</option>
+                        </select>
+
+                        <input class="flatpickr reservation-input" id="reservation-date" type="text" placeholder="Select Reservation Date" data-mindate=today name="reservation-date" tabindex="2" required>
+
+                        <select name="reservation-time" id="reservation-time" tabindex="3" class="reservation-input" required>
+                            <option value="" disabled selected hidden>Reservation Time</option>
+                            <option value="10:30">10:30 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="11:30">11:30 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="12:30">12:30 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="13:30">1:30 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="14:30">2:30 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="15:30">3:30 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="16:30">4:30 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                            <option value="17:30">5:30 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                            <option value="21:30">9:30 PM</option>
+                            <option value="22:00">10:00 PM</option>
+                            <option value="22:30">10:30 PM</option>
+                            <option value="23:00">11:00 PM</option>
+                            <option value="23:30">11:30 PM</option>
+                        </select>
+
+
+                        <textarea type="text" name="specialRequest" id="specialRequest" class="form-control" placeholder="Add a special request (optional)" maxlength="40" autocomplete="off"></textarea>
+
+
+
+
+
+                        <br/><br/>
+                        <input type="submit" value="Make Reservation" />
+
+                    </form>
+
+
+
+
+
+
+
+
 	            </div>
 	        </div>
 	    </div>
@@ -114,6 +209,9 @@
 <!-- ////////////////////////////////////////////// JAVASCRIPT ////////////////////////////////////////////// -->
 
 <script>
+
+    $("#phoneNumber").intlTelInput();
+
     $(document).ready(function(){
         $('a[href^="#"]').on('click',function (e) {
             e.preventDefault();
@@ -128,5 +226,47 @@
             });
         });
     });
+
+    //Customize flatpickr datepicker
+    flatpickr(".flatpickr", {
+        minDate: new Date(), // today
+    /*    maxDate: "2016-12-20",*/
+
+
+        // create an extra input solely for display purposes
+        altInput: true,
+        altFormat: "F j, Y"
+    });
+
+
+
+    // Submit/Login function for User Login Form
+    $(function(){
+        $('#makeReservationForm').on('submit', function(e) {
+            e.preventDefault();
+
+            // grab data from form
+            var data = {
+                reservationName: $('#reservationName').val().trim(),
+                phoneNumber: $('#phoneNumber').val().trim().replace(/\D/g,''),
+                partySize: $('#party-size').val().trim(),
+                reservationDate: $('#reservation-date').val().trim(),
+                reservationTime: $('#reservation-time').val().trim(),
+                specialRequest: $('#reservation-time').val().trim()
+            }
+            
+            var currentURL = window.location + "/makeReservation";
+
+            console.log(currentURL); 
+
+            $.post(currentURL, data, function(result) {
+                console.log(result)
+
+
+                window.location.replace(window.location.origin + result);
+            });
+        });
+    });
+
 
 </script>

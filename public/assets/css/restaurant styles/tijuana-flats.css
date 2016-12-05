@@ -1,8 +1,15 @@
-a {
+a.sidebar-brand {
   font-family: 'Slabo 27px', serif;
   z-index: 2;
   color: #000;
 }
+
+.reservation-input {
+  float: left;
+/*  width: 20%;*/
+}
+
+
 
 /*---------------------------------------------------- SIDE NAVBAR ------------------------------------------------------*/
 #wrapperx {

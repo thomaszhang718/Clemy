@@ -90,11 +90,46 @@ module.exports = function(app){
         })
     })
 
+
     //Route for restaurant
-    app.get('/api/restaurants/:restName', isLoggedIn, function(req, res) {
+    app.get('/restaurants/:restName', isLoggedIn, function(req, res) {
         var restaurantName = req.params.restName;
         res.render("./restaurants/" + restaurantName);
     })
+
+
+
+
+    //Route for making reservation
+    app.post('/restaurants/:restName/makeReservation', isLoggedIn, function(req, res) {
+        var restaurantName = req.params.restName;
+
+        //console.log(restaurantName);
+
+        console.log(req.body)
+
+
+
+        var orderURL = "/restaurants/" + restaurantName + "/addOrder";
+        console.log(orderURL)
+
+        res.send(orderURL);
+    })
+
+
+
+    app.get('/restaurants/:restName/addOrder', isLoggedIn, function(req, res) {
+        var restaurantName = req.params.restName;
+
+        console.log("this is the add order page")
+
+        res.render('./restaurants/addOrder')
+    })
+
+
+
+
+
 
     // =====================================
     // HOME SECTION =====================

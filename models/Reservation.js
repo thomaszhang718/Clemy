@@ -18,6 +18,10 @@ var ReservationSchema = new Schema({
       type:String,
       required:true
   },
+  telephone: {
+      type:String,
+      required:true
+  },  
   partySize: {
       type:Number,
       required:true
