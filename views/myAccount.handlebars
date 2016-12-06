@@ -37,27 +37,27 @@
 
 <div class="container" id="wrapperx">
 
-	<!-- ////////////////////////////////////////////// SIDEBAR SECTION ////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////// SIDEBAR SECTION ////////////////////////////////////////////// -->
 
-	<div id="sidebar-wrapper">
-	    <ul class="sidebar-nav">
-	        <li><a href="#reservation-section" class="sidebar-brand">Reservation</a></li>
-	        <li><a href="#about-section" class="sidebar-brand">About</a></li>
-	        <li><a href="#review-section" class="sidebar-brand">Reviews</a></li>
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li><a href="#reservation-section" class="sidebar-brand">Reservation</a></li>
+            <li><a href="#about-section" class="sidebar-brand">About</a></li>
+            <li><a href="#review-section" class="sidebar-brand">Reviews</a></li>
 
-	    </ul>
-	</div>
+        </ul>
+    </div>
 
-	<!-- ////////////////////////////////////////////// PAGE CONTENT SECTION ////////////////////////////////////////////// -->
+    <!-- ////////////////////////////////////////////// PAGE CONTENT SECTION ////////////////////////////////////////////// -->
 
-	<div id="page-content-wrapper">
+    <div id="page-content-wrapper">
 
 
-	    <div class="row">
-	        <div class="col-md-12">
-	            <div class="heading-section" id="reservation-section">
-	                <h2>Make A Reservation</h2>
-	                <img src="/assets/images/under-heading.png" alt="" />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section" id="reservation-section">
+                    <h2>Make A Reservation</h2>
+                    <img src="/assets/images/under-heading.png" alt="" />
 
                     <form id="makeReservationForm" >
 
@@ -131,7 +131,7 @@
 
                         <textarea type="text" name="specialRequest" id="specialRequest" class="form-control" placeholder="Add a special request (optional)" maxlength="40" autocomplete="off"></textarea>
 
-                        <input type="checkbox" id="agreedToTerms" name="test" required> I Agree to the <a href="#">Lemcy Terms of Use</a> and <a href="#">Privacy Policy</a>
+
 
 
 
@@ -140,37 +140,37 @@
 
                     </form>
 
-                    <p>Please note the Terms of Use includes a Cancellation Fee of $15.00 per person if not provided at least one day in advance. To cancel a reservation, go to "My Reservations" under My Account.
 
 
 
 
 
 
-	            </div>
-	        </div>
-	    </div>
+
+                </div>
+            </div>
+        </div>
 
 
-	    <div class="row">
-	        <div class="col-md-12">
-	            <div class="heading-section" id="about-section">
-	                <h2>About Tijuana Flats</h2>
-	                <img src="/assets/images/under-heading.png" alt="" />
-	            </div>
-	        </div>
-	    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section" id="about-section">
+                    <h2>About Tijuana Flats</h2>
+                    <img src="/assets/images/under-heading.png" alt="" />
+                </div>
+            </div>
+        </div>
 
 
 
-	    <div class="row">
-	        <div class="col-md-12">
-	            <div class="heading-section" id="review-section">
-	                <h2>Yelp Reviews</h2>
-	                <img src="/assets/images/under-heading.png" alt="" />
-	            </div>
-	        </div>
-	    </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section" id="review-section">
+                    <h2>Yelp Reviews</h2>
+                    <img src="/assets/images/under-heading.png" alt="" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -252,8 +252,7 @@
                 partySize: $('#party-size').val().trim(),
                 reservationDate: $('#reservation-date').val().trim(),
                 reservationTime: $('#reservation-time').val().trim(),
-                specialRequest: $('#specialRequest').val(),
-                agreedToTerms: document.getElementById("agreedToTerms").required
+                specialRequest: $('#reservation-time').val().trim()
             }
             
             var currentURL = window.location + "/makeReservation";
@@ -261,6 +260,9 @@
             console.log(currentURL); 
 
             $.post(currentURL, data, function(result) {
+                console.log(result)
+
+
                 window.location.replace(window.location.origin + result);
             });
         });

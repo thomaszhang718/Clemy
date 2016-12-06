@@ -19,6 +19,10 @@ var ReservationSchema = new Schema({
       required:true
   },
   telephone: {
+      type:Number,
+      required:true
+  },  
+  email: {
       type:String,
       required:true
   },  
@@ -30,9 +34,12 @@ var ReservationSchema = new Schema({
       type:Boolean,
       required:true
   },
-  orderItems: {
-      type:Array,
+  specialRequest: {
+      type:String,
       required:true
+  },
+  orderItems: {
+      type:Array
   }
 });
 

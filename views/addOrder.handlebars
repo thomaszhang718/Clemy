@@ -1,9 +1,5 @@
-<link rel="stylesheet" href="../../assets/css/restaurant styles/tijuana-flats.css">
-<link rel="stylesheet" href="../../assets/css/flatpickr.min.css">
-<script src="../../assets/js/flatpickr.min.js"></script>
+<link rel="stylesheet" href="../../assets/css/restaurant styles/addOrder.css">
 
-<link rel="stylesheet" href="../../assets/css/intlTelInput.css">
-<script src="../../assets/js/intlTelInput.js"></script>
 
 
 <header>
@@ -41,10 +37,11 @@
 
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li><a href="#reservation-section" class="sidebar-brand">Reservation</a></li>
-            <li><a href="#about-section" class="sidebar-brand">About</a></li>
-            <li><a href="#review-section" class="sidebar-brand">Reviews</a></li>
-
+            <li><a href="#tf-starters" class="sidebar-brand">Starters</a></li>
+            <li><a href="#tf-entrees" class="sidebar-brand">Entrees</a></li>         
+            <li><a href="#tf-extras" class="sidebar-brand">Extras</a></li>
+            <li><a href="#tf-desserts" class="sidebar-brand">Desserts</a></li>
+            <li><a href="#tf-drinks" class="sidebar-brand">Drinks</a></li>
         </ul>
     </div>
 
@@ -52,122 +49,285 @@
 
     <div id="page-content-wrapper">
 
-
         <div class="row">
-            <div class="col-md-12">
-                <div class="heading-section" id="reservation-section">
-                    <h2>Make A Reservation</h2>
-                    <img src="/assets/images/under-heading.png" alt="" />
 
-                    <form id="makeReservationForm" >
+            <div class="col-md-7" id="menuTop">
+                <div class="row">
+                    <div class="heading-section" id="tf-starters">
+                        <h2>Starters</h2>
+                        <div class="food-section">
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Salsa</a>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Salsa" data-price="2.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Queso</a>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Queso" data-price="3.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Guacamole</a>
+                                </div>
+                                <div class="item-price">$3.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Guacamole" data-price="3.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Tijuana Trio</a>
+                                    <p>(chips, salsa, queso &amp; guacamole)</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
 
-                    <input type="text" name="reservationName" id="reservationName" class="form-control" placeholder="Reservation Name" maxlength="80" autocomplete="off" required>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" maxlength="40" autocomplete="off" required>
+                <div class="row">
+                    <div class="heading-section" id="tf-entrees">
+                        <h2>Entrées</h2>
 
-
-
-
-
-
-
-                        <select name="party-size" id="party-size" tabindex="1" class="reservation-input" required>  
-                            <option value="" disabled selected hidden>Party Size</option>
-                            <option value="1">1 person</option>
-                            <option value="1">1 person</option>
-                            <option value="2">2 people</option>
-                            <option value="3">3 people</option>
-                            <option value="4">4 people</option>
-                            <option value="5">5 people</option>
-                            <option value="6">6 people</option>
-                            <option value="7">7 people</option>
-                            <option value="8">8 people</option>
-                            <option value="9">9 people</option>
-                            <option value="10">10 people</option>
-                            <option value="11">11 people</option>
-                            <option value="12">12 people</option>
-                            <option value="13">13 people</option>
-                            <option value="14">14 people</option>
-                            <option value="15">15 people</option>
-                            <option value="16">16 people</option>
-                            <option value="17">17 people</option>
-                            <option value="18">18 people</option>
-                            <option value="19">19 people</option>
-                            <option value="20">20 people</option>
-                        </select>
-
-                        <input class="flatpickr reservation-input" id="reservation-date" type="text" placeholder="Select Reservation Date" data-mindate=today name="reservation-date" tabindex="2" required>
-
-                        <select name="reservation-time" id="reservation-time" tabindex="3" class="reservation-input" required>
-                            <option value="" disabled selected hidden>Reservation Time</option>
-                            <option value="10:30">10:30 AM</option>
-                            <option value="11:00">11:00 AM</option>
-                            <option value="11:30">11:30 AM</option>
-                            <option value="12:00">12:00 PM</option>
-                            <option value="12:30">12:30 PM</option>
-                            <option value="13:00">1:00 PM</option>
-                            <option value="13:30">1:30 PM</option>
-                            <option value="14:00">2:00 PM</option>
-                            <option value="14:30">2:30 PM</option>
-                            <option value="15:00">3:00 PM</option>
-                            <option value="15:30">3:30 PM</option>
-                            <option value="16:00">4:00 PM</option>
-                            <option value="16:30">4:30 PM</option>
-                            <option value="17:00">5:00 PM</option>
-                            <option value="17:30">5:30 PM</option>
-                            <option value="18:00">6:00 PM</option>
-                            <option value="18:30">6:30 PM</option>
-                            <option value="19:00">7:00 PM</option>
-                            <option value="19:30">7:30 PM</option>
-                            <option value="20:00">8:00 PM</option>
-                            <option value="20:30">8:30 PM</option>
-                            <option value="21:00">9:00 PM</option>
-                            <option value="21:30">9:30 PM</option>
-                            <option value="22:00">10:00 PM</option>
-                            <option value="22:30">10:30 PM</option>
-                            <option value="23:00">11:00 PM</option>
-                            <option value="23:30">11:30 PM</option>
-                        </select>
+                        <span>All items made to order. Toppings include jalapeños, onions, lettuce, tomatoes, &amp; sour cream, unless otherwise noted.</span>
 
 
-                        <textarea type="text" name="specialRequest" id="specialRequest" class="form-control" placeholder="Add a special request (optional)" maxlength="40" autocomplete="off"></textarea>
+                        <div class="food-section">
+                        
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Burritos</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$6.59+</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Salsa" data-price="2.99"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chimichangas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Queso" data-price="3.99"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Dos Enchiladas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$3.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Guacamole" data-price="3.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Flautas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Nachos</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Dos Tacos</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Norrito Rice Bowl</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Fresh Salads</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Tostadas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Quesadillas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Bangin' Chicken</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Pick Dos</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Lil' Lizards</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+
+
+
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="heading-section" id="tf-extras">
+                        <h2>Extras</h2>
+                        <div class="food-section">
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Salsa</a>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Salsa" data-price="2.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Queso</a>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Queso" data-price="3.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Chips &amp; Guacamole</a>
+                                </div>
+                                <div class="item-price">$3.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Guacamole" data-price="3.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Tijuana Trio</a>
+                                    <p>(chips, salsa, queso &amp; guacamole)</p>
+                                </div>
+                                <div class="item-price">$4.29</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Tijuana Trio" data-price="4.29"></i>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="heading-section" id="tf-desserts">
+                        <h2>Desserts</h2>
+
+                        <span>Make It a Happy Ending</span>
+
+                        <div class="food-section">
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Churros</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Salsa" data-price="2.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Cookie Dough Flautas</a>
+                                    <p>Item Description</p>
+                                </div>
+                                <div class="item-price">$2.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Chips & Salsa" data-price="2.99"></i>
+                            </div>
+
+                        </div>
+                        <hr>
+                    </div>
+                </div>
 
 
 
 
 
-                        <br/><br/>
-                        <input type="submit" value="Make Reservation" />
-
-                    </form>
-
-
-
-
-
-
-
-
+                <div class="row">
+                    <div class="heading-section" id="tf-drinks">
+                        <h2>Drink</h2>
+                        <div class="food-section">
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Large Drink</a>
+                                </div>
+                                <div class="item-price">$2.39</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Large Drink" data-price="2.39"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Medium Drink</a>
+                                </div>
+                                <div class="item-price">$1.99</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Large Drink" data-price="1.99"></i>
+                            </div>
+                            <div class="individual-food-item">
+                                <div class="item-info">
+                                    <a href="#">Kid's Soda</a>
+                                </div>
+                                <div class="item-price">$1.00</div>
+                                <i class="fa fa-plus-circle" aria-hidden="true" data-item="Kid's Soda" data-price="1.00"></i>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
-        </div>
 
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading-section" id="about-section">
-                    <h2>About Tijuana Flats</h2>
-                    <img src="/assets/images/under-heading.png" alt="" />
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading-section" id="review-section">
-                    <h2>Yelp Reviews</h2>
-                    <img src="/assets/images/under-heading.png" alt="" />
+            <div class="col-md-5">
+                <div class="checkoutDiv">
+                    <p>checkout</p>
                 </div>
             </div>
         </div>
@@ -210,8 +370,6 @@
 
 <script>
 
-    $("#phoneNumber").intlTelInput();
-
     $(document).ready(function(){
         $('a[href^="#"]').on('click',function (e) {
             e.preventDefault();
@@ -227,46 +385,12 @@
         });
     });
 
-    //Customize flatpickr datepicker
-    flatpickr(".flatpickr", {
-        minDate: new Date(), // today
-    /*    maxDate: "2016-12-20",*/
-
-
-        // create an extra input solely for display purposes
-        altInput: true,
-        altFormat: "F j, Y"
+    $('.fa-plus-circle').click(function(){
+        console.log($(this).data("item"));
+        console.log($(this).data("price"));
     });
 
 
-
-    // Submit/Login function for User Login Form
-    $(function(){
-        $('#makeReservationForm').on('submit', function(e) {
-            e.preventDefault();
-
-            // grab data from form
-            var data = {
-                reservationName: $('#reservationName').val().trim(),
-                phoneNumber: $('#phoneNumber').val().trim().replace(/\D/g,''),
-                partySize: $('#party-size').val().trim(),
-                reservationDate: $('#reservation-date').val().trim(),
-                reservationTime: $('#reservation-time').val().trim(),
-                specialRequest: $('#reservation-time').val().trim()
-            }
-            
-            var currentURL = window.location + "/makeReservation";
-
-            console.log(currentURL); 
-
-            $.post(currentURL, data, function(result) {
-                console.log(result)
-
-
-                window.location.replace(window.location.origin + result);
-            });
-        });
-    });
 
 
 </script>

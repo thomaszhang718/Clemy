@@ -104,14 +104,25 @@ module.exports = function(app){
     app.post('/restaurants/:restName/makeReservation', isLoggedIn, function(req, res) {
         var restaurantName = req.params.restName;
 
-        //console.log(restaurantName);
+        var newReservation = new Reservation();
 
-        console.log(req.body)
+        newReservation.reservationDate =  req.body.reservationDate;
+        newReservation.reservationTime = req.body.reservationTime;
+        newReservation.reservationName = req.body.reservationName;
+        newReservation.telephone = req.body.phoneNumber;
+        newReservation.email = req.user.local.email;
+        newReservation.partySize = req.body.partySize;
+        newReservation.agreedToTerms = req.body.agreedToTerms;
+        newReservation.specialRequest = req.body.specialRequest;
 
+        // save the reservation to DB
+        newReservation.save(function(err, newReservation) {
+            if (err)
+                throw err;
+        });
 
-
+        //Create url for redirect
         var orderURL = "/restaurants/" + restaurantName + "/addOrder";
-        console.log(orderURL)
 
         res.send(orderURL);
     })
@@ -121,13 +132,15 @@ module.exports = function(app){
     app.get('/restaurants/:restName/addOrder', isLoggedIn, function(req, res) {
         var restaurantName = req.params.restName;
 
-        console.log("this is the add order page")
-
-        res.render('./restaurants/addOrder')
+        res.render('addOrder');
     })
 
 
 
+    app.get('/myAccount', isLoggedIn, function(req, res) {
+
+        res.render('myAccount');
+    })
 
 
 
