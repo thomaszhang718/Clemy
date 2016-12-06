@@ -1,0 +1,85 @@
+/*-------Contact---------*/
+input.contact {
+  background: #fff;
+  border: solid 1px #ddd;
+  color: #000;
+  padding: 15px 30px;
+/*  margin-right: 3%;*/
+  margin-bottom: 30px;
+  outline: none;
+}
+
+input.contact.noMarr {
+  margin-right: 0px;
+}
+
+textarea.contact {
+  background: #fff;
+  color: #000;
+  border: solid 1px #ddd;
+  padding: 15px 30px;
+  margin-bottom: 40px;
+  outline: none;
+  height: 150px;
+}
+
+.contact.submit {
+  background: #f78e21;
+  font-family: 'Slabo 27px', serif;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  margin: 0px auto;
+  border: none !important;
+  border-radius: 10px;
+  float: none;
+  display: block;
+}
+
+.contact.submit:hover {
+  background: #c5711a;
+}
+
+.done {
+  display: none;
+  margin: auto;
+  width: 50%;
+}
+
+.error input,input.error,.error textarea,textarea.error {
+  background-color: #ffffff;
+  border: 1px solid red !Important;
+  -webkit-transition: border linear 0.2s,box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s,box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s,box-shadow linear 0.2s;
+  transition: border linear 0.2s,box-shadow linear 0.2s;
+}
+
+#contactName {
+    width: 50%;
+    display: block;
+    margin: 20px auto;
+}
+
+#contactEmail {
+    width: 50%;
+    display: block;
+    margin: 20px auto;
+}
+
+#contactMessage {
+    width: 50%;
+    display: block;
+    margin: 20px auto;
+    font-size: 16px;
+    font-style: normal;
+}
+
+#contactDiv {
+    padding: 20px 0 20px 0;
+}
+
+#contactP {
+    margin-top: 20px;
+}
