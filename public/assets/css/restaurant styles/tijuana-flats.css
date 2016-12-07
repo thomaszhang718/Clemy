@@ -9,7 +9,24 @@ a.sidebar-brand {
 /*  width: 20%;*/
 }
 
+.heading-section {
+  padding-bottom: 0px;
+  padding-top: 40px;
+}
 
+#reservation-section {
+  padding-top: 80px;
+}
+
+#gmap {
+  padding-top: 2em;
+}
+
+.locationInfo {
+  text-align: left;
+  position: relative;
+  left: 20%;
+}
 
 /*---------------------------------------------------- SIDE NAVBAR ------------------------------------------------------*/
 #wrapperx {
@@ -70,4 +87,84 @@ a.sidebar-brand {
       transition: all 0.4s ease 0s;
     }
 
+}
+
+/*---------------------------------------------------- FORM CSS ------------------------------------------------------*/
+
+#makeReservationForm {
+  margin-top: 2em;
+}
+
+#reservationName {
+  width: 60%;
+  display: block;
+  margin: 1em auto 1em auto;
+}
+
+.intl-tel-input {
+  float: left;
+  width: 29%;
+  left: 20%;
+  margin-bottom: 1em;
+}
+
+#party-size {
+  width: 29%;
+  float: left;
+  position: relative;
+  left: 22%;
+  margin-bottom: 1em;
+}
+
+.form-control[readonly] {
+  display: block;
+  margin: 3.5em 0 1em 0;
+  width: 29%;
+  float: left;
+  position: relative;
+  left: -38%;
+}
+
+#reservation-time {
+  width: 28.25%;
+  float: left;
+  position: absolute;
+  left: 50.9%;
+  margin: 3.5em 0 1em 0;
+}
+
+#specialRequest {
+  width: 60%;
+  display: block;
+  position: relative;
+  left: 20%;
+  margin: 7em 0 1em 0;
+  height: 10em;
+}
+
+#cancellationDisclaimer {
+  width: 50%;
+  text-align: left;
+  margin: auto;
+  color: #d8d8d8;
+  font-size: 10px;
+}
+
+#makeResBtn {
+  width: 20%;
+  border: 2px solid;
+  border-radius: 10px;  
+}
+
+/*---------------------------------------------------- REVIEW SECTION CSS ------------------------------------------------------*/
+
+#google-reviews {
+/*  margin-top: 2em;*/
+  width: 75%;
+  display: block;
+  margin: 2em auto auto auto;
+}
+
+footer {
+  margin-top: 180px;
 }

@@ -5,6 +5,10 @@
 <link rel="stylesheet" href="../../assets/css/intlTelInput.css">
 <script src="../../assets/js/intlTelInput.js"></script>
 
+<link rel="stylesheet" href="../../assets/css/google-places.css">
+<script src="../../assets/js/google-places.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places&key=AIzaSyCBkB4vzgC2CJr19EbRi_T0Pmtk3Q8loug"></script>
+
 
 <header>
     <div id="top-header">
@@ -41,9 +45,9 @@
 
 	<div id="sidebar-wrapper">
 	    <ul class="sidebar-nav">
-	        <li><a href="#reservation-section" class="sidebar-brand">Reservation</a></li>
-	        <li><a href="#about-section" class="sidebar-brand">About</a></li>
-	        <li><a href="#review-section" class="sidebar-brand">Reviews</a></li>
+	        <li><a href="#reservation-section" class="sidebar-brand" value="eservation-section">Reservation</a></li>
+	        <li><a href="#about-section" class="sidebar-brand" value="about-section">About</a></li>
+	        <li><a href="#review-section" class="sidebar-brand" value="review-section">Reviews</a></li>
 
 	    </ul>
 	</div>
@@ -61,16 +65,11 @@
 
                     <form id="makeReservationForm" >
 
-                    <input type="text" name="reservationName" id="reservationName" class="form-control" placeholder="Reservation Name" maxlength="80" autocomplete="off" required>
-                    <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" maxlength="40" autocomplete="off" required>
+                        <input type="text" name="reservationName" id="reservationName" class="form-control" placeholder="Reservation Name" maxlength="80" autocomplete="off" required>
+                        <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" maxlength="40" autocomplete="off" required>
 
 
-
-
-
-
-
-                        <select name="party-size" id="party-size" tabindex="1" class="reservation-input" required>  
+                        <select name="party-size" id="party-size" tabindex="1" class="form-control reservation-input" required>  
                             <option value="" disabled selected hidden>Party Size</option>
                             <option value="1">1 person</option>
                             <option value="1">1 person</option>
@@ -97,7 +96,7 @@
 
                         <input class="flatpickr reservation-input" id="reservation-date" type="text" placeholder="Select Reservation Date" data-mindate=today name="reservation-date" tabindex="2" required>
 
-                        <select name="reservation-time" id="reservation-time" tabindex="3" class="reservation-input" required>
+                        <select name="reservation-time" id="reservation-time" tabindex="3" class="reservation-input form-control" required>
                             <option value="" disabled selected hidden>Reservation Time</option>
                             <option value="10:30">10:30 AM</option>
                             <option value="11:00">11:00 AM</option>
@@ -131,16 +130,18 @@
 
                         <textarea type="text" name="specialRequest" id="specialRequest" class="form-control" placeholder="Add a special request (optional)" maxlength="40" autocomplete="off"></textarea>
 
-                        <input type="checkbox" id="agreedToTerms" name="test" required> I Agree to the <a href="#">Lemcy Terms of Use</a> and <a href="#">Privacy Policy</a>
+                        <input type="checkbox" id="agreedToTerms" name="test" required> I Agree to the <a href="#">Lemcy Terms of Use*</a> and <a href="#">Privacy Policy</a>
 
 
 
                         <br/><br/>
-                        <input type="submit" value="Make Reservation" />
+                        <button type="submit" class="signup signupmodal-submit" id="makeResBtn">Make Reservation</button>
+
+
 
                     </form>
-
-                    <p>Please note the Terms of Use includes a Cancellation Fee of $15.00 per person if not provided at least one day in advance. To cancel a reservation, go to "My Reservations" under My Account.
+                    <br/>
+                    <p id="cancellationDisclaimer">*Please note the Terms of Use includes a Cancellation Fee of $15.00 per person if not provided at least one day in advance. To cancel a reservation, go to "My Reservations" under My Account.</p>
 
 
 
@@ -155,8 +156,26 @@
 	    <div class="row">
 	        <div class="col-md-12">
 	            <div class="heading-section" id="about-section">
-	                <h2>About Tijuana Flats</h2>
+	                <h2>About Tijuana Flats - Winter Springs</h2>
 	                <img src="/assets/images/under-heading.png" alt="" />
+
+                        <div id="gmap">
+
+                            <iframe
+                                width="600"
+                                height="450"
+                                frameborder="0" style="border:0"
+                                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCBkB4vzgC2CJr19EbRi_T0Pmtk3Q8loug
+                                &q=place_id:ChIJZ7x6Ym1s54gRMTkSAbZzM7Q" allowfullscreen>
+                            </iframe>
+
+                        </div>
+
+                        <p class="locationInfo">Kitschy Mexican chain restaurant known for an extensive hot sauce bar &amp; colorful, muraled walls.</p>
+                        <p class="locationInfo">Address: 160 Tuskawilla Rd #1208, Winter Springs, FL 32708</p>
+                        <p class="locationInfo">Phone:(407) 706-2468</p>
+
+
 	            </div>
 	        </div>
 	    </div>
@@ -166,8 +185,11 @@
 	    <div class="row">
 	        <div class="col-md-12">
 	            <div class="heading-section" id="review-section">
-	                <h2>Yelp Reviews</h2>
+	                <h2>Google Reviews</h2>
 	                <img src="/assets/images/under-heading.png" alt="" />
+
+                    <div id="google-reviews"></div>
+
 	            </div>
 	        </div>
 	    </div>
@@ -213,17 +235,19 @@
     $("#phoneNumber").intlTelInput();
 
     $(document).ready(function(){
-        $('a[href^="#"]').on('click',function (e) {
-            e.preventDefault();
-
-            var target = this.hash;
-            var $target = $(target);
-
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top
-            }, 900, 'swing', function () {
-                window.location.hash = target;
-            });
+        $(function() {
+          $('a[href*="#"]:not([href="#"])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 1000);
+                return false;
+              }
+            }
+          });
         });
     });
 
@@ -256,6 +280,16 @@
                 agreedToTerms: document.getElementById("agreedToTerms").required
             }
             
+            window.location.replace("#");
+
+            // slice off the remaining '#' in HTML5:    
+            if (typeof window.history.replaceState == 'function') {
+              history.replaceState({}, '', window.location.href.slice(0, -1));
+            }
+
+
+
+
             var currentURL = window.location + "/makeReservation";
 
             console.log(currentURL); 
@@ -265,6 +299,25 @@
             });
         });
     });
+
+
+
+    $(document).ready(function() {
+      $("#google-reviews").googlePlaces({
+          placeId: 'ChIJZ7x6Ym1s54gRMTkSAbZzM7Q'
+        , render: ['reviews']
+        , min_rating: 4
+        , max_rows:5
+      });
+    });
+  
+
+
+
+
+
+
+
 
 
 </script>

@@ -115,6 +115,9 @@ module.exports = function(app){
         newReservation.agreedToTerms = req.body.agreedToTerms;
         newReservation.specialRequest = req.body.specialRequest;
 
+        console.log(newReservation)
+
+
         // save the reservation to DB
         newReservation.save(function(err, newReservation) {
             if (err)
