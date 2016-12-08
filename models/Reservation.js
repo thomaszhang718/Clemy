@@ -35,8 +35,7 @@ var ReservationSchema = new Schema({
       required:true
   },
   specialRequest: {
-      type:String,
-      required:true
+      type:String
   },
   orderItems: {
       type:Array
