@@ -10,6 +10,10 @@ var ReservationSchema = new Schema({
     type:Date,
     required:true
   },
+/*  creationDate: {
+    type:Date,
+    required:true
+  },*/
   reservationTime: {
     type:String,
     required:true

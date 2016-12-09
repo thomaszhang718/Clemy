@@ -278,6 +278,7 @@
                 reservationTime: $('#reservation-time').val().trim(),
                 specialRequest: $('#specialRequest').val(),
                 agreedToTerms: document.getElementById("agreedToTerms").required
+/*                creationDate: Date.now()*/
             }
             
             window.location.replace("#");
@@ -286,9 +287,6 @@
             if (typeof window.history.replaceState == 'function') {
               history.replaceState({}, '', window.location.href.slice(0, -1));
             }
-
-
-
 
             var currentURL = window.location + "/makeReservation";
 
