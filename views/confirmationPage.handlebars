@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../../assets/css/home-style.css">
+<link rel="stylesheet" href="../../assets/css/confirm-style.css">
 
 <header>
     <div id="top-header">
@@ -41,12 +41,17 @@
             </div>
         </div>
         <div class="row">
-            <p>Your reservation and order has been received. Payment can be made at the restaurant or 
+            <p>Your reservation and order has been received. Payment can be made at the restaurant upon arrival or now. If you decide to pay now, your order will be locked in and cannot be changed. If you wish to amend your order later, changes can be made under "Your Reservations" up to 24 hours prior to the reservation time.
         </div>
+        <div class="row" id="paymentArea">
+            <div>
+                <button id="payLaterButton">I'll Pay Later (Auto redirect to home)</button> <button id="payNowButton">I'll Pay Now</button>
+            </div>
 
-
-
-
+            <div id="payNowDiv" style="display:none">
+                <p>Fancy Credit Card Form Shows Up Here WOOOOOOOOO</p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -87,6 +92,19 @@
 <!-- ////////////////////////////////////////////// JAVASCRIPT ////////////////////////////////////////////// -->
 
 <script>
+    $(function(){
+        $('#payLaterButton').on('click', function(e) {
+            e.preventDefault();
+            window.location.replace(window.location.origin + "/home");
+        });
+    });
+
+    $(function(){
+        $('#payNowButton').on('click', function(e) {
+            e.preventDefault();
+            $("#payNowDiv").css("display", "block");
+        });
+    });
 
 
 </script>

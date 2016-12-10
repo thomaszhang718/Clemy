@@ -184,12 +184,6 @@ module.exports = function(app){
         });
     });
 
-
-
-
-
-
-
     app.get('/myAccount', isLoggedIn, function(req, res) {
         res.render('myAccount');
     })

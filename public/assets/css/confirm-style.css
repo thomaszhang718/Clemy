@@ -1,0 +1,9 @@
+footer {
+    bottom: 0;
+}
+
+button {
+    display: inline-block;
+    position: relative;
+    left: 36%;
+}
