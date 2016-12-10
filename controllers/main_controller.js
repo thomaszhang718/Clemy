@@ -88,14 +88,14 @@ module.exports = function(app){
                 res.send(false)
             }
         })
-    })
+    });
 
 
     //Route for restaurant
     app.get('/restaurants/:restName', isLoggedIn, function(req, res) {
         var restaurantName = req.params.restName;
         res.render("./restaurants/" + restaurantName);
-    })
+    });
 
 
 
@@ -115,8 +115,7 @@ module.exports = function(app){
         newReservation.agreedToTerms = req.body.agreedToTerms;
         newReservation.specialRequest = req.body.specialRequest;
 
-        console.log(newReservation)
-
+        //console.log(newReservation);
 
         // save the reservation to DB
         newReservation.save(function(err, newReservation) {
@@ -125,23 +124,73 @@ module.exports = function(app){
         });
 
         //Create url for redirect
-        var orderURL = "/restaurants/" + restaurantName + "/addOrder";
+        var orderURL = "/restaurants/" + restaurantName + "/addOrder/" + newReservation._id;
 
         res.send(orderURL);
-    })
+    });
 
-
-
-    app.get('/restaurants/:restName/addOrder', isLoggedIn, function(req, res) {
+    app.get('/restaurants/:restName/addOrder/:reservationID', isLoggedIn, function(req, res) {
         var restaurantName = req.params.restName;
+        var reservationID = req.params.reservationID;
 
         res.render('addOrder');
-    })
+    });
+
+    app.post('/AddItemsToDB/:reservationID', isLoggedIn, function(req, res) {
+        var reservationID = req.params.reservationID;
+
+        var insertData = {
+            orderItems: req.body.data
+        }
+
+        Reservation.findOneAndUpdate({_id: reservationID}, insertData, {new:true}, function(err, doc) {
+            if(err){
+                console.log("Something wrong when updating data!");
+            }
+            //console.log(doc);
+            res.send(true);
+        });
+    });
+
+    app.post('/confirmOrder', isLoggedIn, function(req, res) {
+
+        //console.log("got to confirm order");
+
+        var insertData = {
+            orderSubtotal: req.body.subtotal,
+            orderTax: req.body.totalTax,
+            orderTotal: req.body.totalPrice
+        }
+
+        Reservation.findOneAndUpdate({_id: req.body.reservationID}, insertData, {new:true}, function(err, doc) {
+            if(err){
+                console.log("Something wrong when updating data!");
+            }
+            //console.log(doc);
+            var nextURL = "/paymentPage/" + req.body.reservationID;
+            res.send(nextURL);
+        });
+    });
+
+    app.get('/paymentPage/:reservationID', isLoggedIn, function(req, res) {
+        var reservationID = req.params.reservationID;
+
+        Reservation.findOne({_id: reservationID}, function(err, doc) {
+            if(err){
+                console.log("Something wrong when updating data!");
+            }
+            //console.log(doc);
+            res.render('confirmationPage');
+        });
+    });
+
+
+
+
 
 
 
     app.get('/myAccount', isLoggedIn, function(req, res) {
-
         res.render('myAccount');
     })
 

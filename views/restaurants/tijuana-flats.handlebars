@@ -280,17 +280,10 @@
                 agreedToTerms: document.getElementById("agreedToTerms").required
 /*                creationDate: Date.now()*/
             }
-            
-            window.location.replace("#");
-
-            // slice off the remaining '#' in HTML5:    
-            if (typeof window.history.replaceState == 'function') {
-              history.replaceState({}, '', window.location.href.slice(0, -1));
-            }
 
             var currentURL = window.location + "/makeReservation";
 
-            console.log(currentURL); 
+            //console.log(currentURL); 
 
             $.post(currentURL, data, function(result) {
                 window.location.replace(window.location.origin + result);

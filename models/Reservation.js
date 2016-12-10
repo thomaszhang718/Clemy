@@ -43,7 +43,17 @@ var ReservationSchema = new Schema({
   },
   orderItems: {
       type:Array
+  },
+  orderSubtotal: {
+      type:Number
+  },
+  orderTax: {
+      type:Number
+  },
+  orderTotal: {
+      type:Number
   }
+
 });
 
 // Create the Reservation model with the ReservationSchema

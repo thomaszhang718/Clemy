@@ -38,7 +38,7 @@ require('./config/passport')(passport); // pass passport for configuration
 app.use(morgan('dev'));
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 
 // make public a static dir
