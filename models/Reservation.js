@@ -52,8 +52,11 @@ var ReservationSchema = new Schema({
   },
   orderTotal: {
       type:Number
+  },
+  orderPaid: {
+      type:Boolean,
+      default: false
   }
-
 });
 
 // Create the Reservation model with the ReservationSchema
